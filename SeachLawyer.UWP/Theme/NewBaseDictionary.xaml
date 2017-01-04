@@ -1,0 +1,57 @@
+﻿<ResourceDictionary
+    x:Class="SeachLawyer.UWP.Theme.NewBaseDictionary"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:theme="using:SeachLawyer.UWP.Theme"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:SeachLawyer.UWP.Model"
+    mc:Ignorable="d">
+
+    <Style x:Key="textblockMenuIcon" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+    </Style>
+    <Style x:Key="textblockMenuContent" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontFamily" Value="微软雅黑"/>
+        <Setter Property="Margin" Value="12,0,0,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    <DataTemplate x:Key="dataTemplateForListView" x:DataType="data:Lawyer">
+        <Grid Padding="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Padding="5" VerticalAlignment="Center">
+                <Ellipse Width="100" Height="100">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{x:Bind img}"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </StackPanel>
+            <Grid Grid.Column="1" Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="姓名：" Style="{StaticResource textblockMenuContent}"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="{x:Bind name}" Style="{StaticResource textblockMenuContent}"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="手机：" Style="{StaticResource textblockMenuContent}"/>
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind mobile}" Style="{StaticResource textblockMenuContent}"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="省市：" Style="{StaticResource textblockMenuContent}"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="12,0,0,0">
+                    <TextBlock Text="{x:Bind province}" Style="{StaticResource textblockMenuContent}" Margin="0,0,0,15"/>
+                    <TextBlock Text="{x:Bind city}" Style="{StaticResource textblockMenuContent}" Margin="0,0,0,15"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

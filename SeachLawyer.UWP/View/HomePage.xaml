@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="SeachLawyer.UWP.View.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SeachLawyer.UWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:c="using:Microsoft.Xaml.Interactions.Core"    
+    DataContext="{Binding HomeVM,Source={StaticResource vmlocator}}"
+    mc:Ignorable="d">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Row="0"
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                       Padding="0,9">
+            <TextBlock Name="PageTitle"
+                       Text="首页"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="24"
+                       FontFamily="微软雅黑"
+                       Padding="20,0,0,0"/>
+        </RelativePanel>
+        <ListView Name="LawyerListView"
+                  Padding="10"
+                  Grid.Row="1"
+                  CanReorderItems="True"
+                  IsItemClickEnabled="True"
+                  SelectionMode="None"
+                  ItemClick="LawyerListView_ItemClick"
+                  ItemsSource="{Binding LawyerList}"
+                  ItemTemplate="{StaticResource dataTemplateForListView}">
+        </ListView>
+        <ProgressRing Grid.Row="1"
+                 Name="Loading"
+                 Width="100"
+                 Height="100"
+                 IsActive="True"
+                 Visibility="{Binding ProgressRingVisibility}"/>
+    </Grid>
+</Page>

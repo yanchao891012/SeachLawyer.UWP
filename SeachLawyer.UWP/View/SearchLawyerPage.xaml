@@ -1,0 +1,162 @@
+﻿<Page
+    x:Class="SeachLawyer.UWP.View.SearchLawyerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SeachLawyer.UWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding SearchLawyerVM,Source={StaticResource vmlocator}}"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:constant="using:SeachLawyer.UWP.Constant"
+    mc:Ignorable="d">
+
+    <!--<i:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{Binding loadCommand}"/>
+        </core:EventTriggerBehavior>
+    </i:Interaction.Behaviors>-->
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <RelativePanel Grid.Row="0" 
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                       Padding="0,9">
+            <TextBlock Name="PageTitle"
+                       Text="律师查询"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="24"
+                       FontFamily="微软雅黑"
+                       Padding="20,0,0,0"/>
+        </RelativePanel>
+        <Pivot Grid.Row="1"
+               Name="pivotLawyers"
+               SelectionChanged="pivotLawyers_SelectionChanged">
+            <PivotItem Header="按省份查询" Margin="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <TextBlock Text="省份" Style="{StaticResource TitleTextBlockStyle}"/>
+                        <ComboBox ItemsSource="{Binding ProList,Mode=TwoWay}" SelectedItem="{Binding SelectedItemPro,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" Width="200"/>
+                        <Button Content="查询" Command="{Binding SearchCommand}">
+                            <Button.CommandParameter>
+                                <constant:Method>LawyerByProvince</constant:Method>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                    <ListView Grid.Row="1"
+                              x:Name="ListViewPro"
+                              Padding="10" 
+                              SelectionMode="None"
+                              IsItemClickEnabled="True"
+                              ItemClick="ListView_ItemClick"
+                              ItemsSource="{Binding LawyerProList}"
+                              ItemTemplate="{StaticResource dataTemplateForListView}" Margin="0,20"/>
+                    <ProgressRing Grid.Row="1"
+                                Width="100"
+                                Height="100"
+                                IsActive="True"
+                                Visibility="{Binding ProgressRingVisibility}"/>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="按城市查询" Margin="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <TextBlock Text="省份" Style="{StaticResource TitleTextBlockStyle}"/>
+                        <ComboBox ItemsSource="{Binding ProList,Mode=TwoWay}" SelectedItem="{Binding SelectedItemPro,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" Width="200"/>
+                        <TextBlock Text="城市" Style="{StaticResource TitleTextBlockStyle}" Margin="20,0"/>
+                        <ComboBox ItemsSource="{Binding CityList,Mode=TwoWay}" SelectedItem="{Binding SelectedItemCity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                        <Button Content="查询" Command="{Binding SearchCommand}" Margin="20,0">
+                            <Button.CommandParameter>
+                                <constant:Method>LawyerByCity</constant:Method>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                    <ListView Grid.Row="1"
+                              x:Name="ListViewCity"
+                              Padding="10" 
+                              SelectionMode="None"
+                              IsItemClickEnabled="True"
+                              ItemClick="ListView_ItemClick"
+                              ItemsSource="{Binding LawyerCityList}"
+                              ItemTemplate="{StaticResource dataTemplateForListView}" Margin="0,20"/>
+                    <ProgressRing Grid.Row="1"
+                                Width="100"
+                                Height="100"
+                                IsActive="True"
+                                Visibility="{Binding ProgressRingVisibility}"/>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="按姓名查询">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <TextBlock Text="姓名" Style="{StaticResource TitleTextBlockStyle}"/>
+                        <TextBox Text="{Binding Name,Mode=TwoWay}" Width="200" Margin="20,0"/>
+                        <Button Command="{Binding SearchCommand}" Content="查询">
+                            <Button.CommandParameter>
+                                <constant:Method>LawyerByName</constant:Method>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                    <ListView Grid.Row="1"
+                              x:Name="ListViewName"
+                              Padding="10"
+                              SelectionMode="None"
+                              IsItemClickEnabled="True"
+                              ItemClick="ListView_ItemClick"
+                              ItemsSource="{Binding LawyerNameList}"
+                              ItemTemplate="{StaticResource dataTemplateForListView}" Margin="0,20"/>
+                    <ProgressRing Grid.Row="1"
+                                  Width="100"
+                                  Height="100"
+                                  IsActive="True"
+                                  Visibility="{Binding ProgressRingVisibility}"/>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="按电话号码查询" Margin="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <TextBlock Text="电话号码" Style="{StaticResource TitleTextBlockStyle}"/>
+                        <TextBox Text="{Binding PhoneNum,Mode=TwoWay}" Width="200" Margin="20,0"/>
+                        <Button Command="{Binding SearchCommand}" Content="查询">
+                            <Button.CommandParameter>
+                                <constant:Method>LawyerByPhone</constant:Method>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                    <ListView Grid.Row="1"
+                              x:Name="ListViewPhone"
+                              Padding="10"
+                              SelectionMode="None"
+                              IsItemClickEnabled="True"
+                              ItemClick="ListView_ItemClick"
+                              ItemsSource="{Binding LawyerPhoneList}"
+                              ItemTemplate="{StaticResource dataTemplateForListView}" Margin="0,20"/>
+                    <ProgressRing Grid.Row="1"
+                                  Width="100"
+                                  Height="100"
+                                  IsActive="True"
+                                  Visibility="{Binding ProgressRingVisibility}"/>
+                </Grid>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>

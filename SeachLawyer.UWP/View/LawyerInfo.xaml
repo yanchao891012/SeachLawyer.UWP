@@ -1,0 +1,153 @@
+﻿<Page
+    x:Class="SeachLawyer.UWP.View.LawyerInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SeachLawyer.UWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Row="0"
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                       Padding="0,9">
+            <Button Name="Back"
+                    Content="&#xE0A6;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="24"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Background="Transparent"
+                    Click="Back_Click"
+                    />
+            <TextBlock Name="InfoTitle"
+                       Text="律师信息"
+                       RelativePanel.RightOf="Back"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="24"
+                       FontFamily="微软雅黑"
+                       Padding="20,0,0,0"/>
+        </RelativePanel>
+        <Grid Grid.Row="1" DataContext="{x:Bind LawyersInfo}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Column="0" Grid.Row="0"
+                   Width="100"
+                   Height="100"
+                   VerticalAlignment="Top"
+                   Margin="0,20"
+                   Source="{x:Bind LawyersInfo.img}"/>
+
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                           Text="姓名："
+                           Visibility="{x:Bind LawyersInfo.name,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock Grid.Row="0" Grid.Column="1"
+                           Text="{x:Bind LawyersInfo.name}"
+                           Visibility="{x:Bind LawyersInfo.name,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource SubtitleTextBlockStyle}"/>
+                <TextBlock Grid.Row="1" Grid.Column="0"
+                           Text="座机："
+                           Visibility="{x:Bind LawyersInfo.tel,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TitleTextBlockStyle}"/>
+                <HyperlinkButton Grid.Row="1" Grid.Column="1"
+                           Content="{x:Bind LawyersInfo.tel}"
+                           Visibility="{x:Bind LawyersInfo.tel,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TextBlockButtonStyle}" FontSize="20"
+                           Click="HyperlinkButton_Click"/>
+                <TextBlock Grid.Row="2" Grid.Column="0"
+                           Text="手机："
+                           Visibility="{x:Bind LawyersInfo.mobile,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TitleTextBlockStyle}"/>
+                <HyperlinkButton Grid.Row="2" Grid.Column="1"
+                           Content="{x:Bind LawyersInfo.mobile}"
+                           Visibility="{x:Bind LawyersInfo.mobile,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TextBlockButtonStyle}" FontSize="20"
+                           Click="HyperlinkButton_Click"/>
+                <TextBlock Grid.Row="3" Grid.Column="0"
+                           Text="QQ号："
+                           Visibility="{x:Bind LawyersInfo.qq,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock Grid.Row="3" Grid.Column="1"
+                           Text="{x:Bind LawyersInfo.qq}"
+                           Visibility="{x:Bind LawyersInfo.qq,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource SubtitleTextBlockStyle}"/>
+                <TextBlock Grid.Row="4" Grid.Column="0"
+                           Text="邮箱："
+                           Visibility="{x:Bind LawyersInfo.email,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TitleTextBlockStyle}"/>
+                <HyperlinkButton Grid.Row="4" Grid.Column="1"
+                           Content="{x:Bind LawyersInfo.email}"
+                           Visibility="{x:Bind LawyersInfo.email,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TextBlockButtonStyle}" FontSize="20"
+                           Click="HyperlinkButton_Click_1"/>
+                <TextBlock Grid.Row="5" Grid.Column="0"
+                           Text="执业机构："
+                           Visibility="{x:Bind LawyersInfo.corp,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock Grid.Row="5" Grid.Column="1"
+                           Text="{x:Bind LawyersInfo.corp}"
+                           Visibility="{x:Bind LawyersInfo.corp,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource SubtitleTextBlockStyle}"/>
+                <TextBlock Grid.Row="6" Grid.Column="0"
+                           Text="执业证号："
+                           Visibility="{x:Bind LawyersInfo.idno,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock Grid.Row="6" Grid.Column="1"
+                           Text="{x:Bind LawyersInfo.idno}"
+                           Visibility="{x:Bind LawyersInfo.idno,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource SubtitleTextBlockStyle}"/>
+                <TextBlock Grid.Row="7" Grid.Column="0"
+                           Text="专长领域："
+                           Visibility="{x:Bind LawyersInfo.spec,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock Grid.Row="7" Grid.Column="1"
+                           Text="{x:Bind LawyersInfo.spec}"
+                           Visibility="{x:Bind LawyersInfo.spec,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource SubtitleTextBlockStyle}"/>
+                <TextBlock Grid.Row="8" Grid.Column="0"
+                           Text="工作地址："
+                           Visibility="{x:Bind LawyersInfo.addr,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock Grid.Row="8" Grid.Column="1"
+                           Text="{x:Bind LawyersInfo.addr}"
+                           Visibility="{x:Bind LawyersInfo.addr,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                           Style="{StaticResource SubtitleTextBlockStyle}"/>
+            </Grid>
+            <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2"
+                          Margin="0,20,0,0"
+                          Visibility="{x:Bind LawyersInfo.desp,Converter={StaticResource isNullOrEmptyConverVisibility}}"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+                <TextBlock Text="{x:Bind LawyersInfo.desp}" Style="{StaticResource SubtitleTextBlockStyle}" Margin="10"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>

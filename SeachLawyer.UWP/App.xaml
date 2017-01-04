@@ -1,0 +1,19 @@
+﻿<Application
+    x:Class="SeachLawyer.UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SeachLawyer.UWP"
+    xmlns:theme="using:SeachLawyer.UWP.Theme"
+    xmlns:vm="using:SeachLawyer.UWP.ViewModel"
+    xmlns:conver="using:SeachLawyer.UWP.Conver"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <theme:NewBaseDictionary/>
+            </ResourceDictionary.MergedDictionaries>
+            <vm:VMLocator x:Key="vmlocator"/>
+            <conver:IsNullOrEmptyConvertToVisibility x:Key="isNullOrEmptyConverVisibility"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
