@@ -114,13 +114,20 @@
       <DependentUpon>NewBaseDictionary.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\SearchArgsViewModel.cs" />
     <Compile Include="ViewModel\SearchLawyerViewModel.cs" />
     <Compile Include="ViewModel\VMLocator.cs" />
+    <Compile Include="View\ArgsInfo.xaml.cs">
+      <DependentUpon>ArgsInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LawyerInfo.xaml.cs">
       <DependentUpon>LawyerInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchArgsPage.xaml.cs">
+      <DependentUpon>SearchArgsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SearchLawyerPage.xaml.cs">
       <DependentUpon>SearchLawyerPage.xaml</DependentUpon>
@@ -156,11 +163,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ArgsInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LawyerInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SearchArgsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

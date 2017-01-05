@@ -45,3 +45,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.suo
+/HttpHelper/bin/Debug
+/HttpHelper/obj/Debug
+/SeachLawyer.UWP/bin/x86/Debug
+/SeachLawyer.UWP/obj/x86/Debug

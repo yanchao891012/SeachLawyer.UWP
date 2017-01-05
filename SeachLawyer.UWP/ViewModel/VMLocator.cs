@@ -49,13 +49,25 @@ namespace SeachLawyer.UWP.ViewModel
 
         private SearchLawyerViewModel _searchLawyerVM;
         /// <summary>
-        /// 查询页面ViewModel
+        /// 查询律师页面ViewModel
         /// </summary>
         public SearchLawyerViewModel SearchLawyerVM
         {
             get
             {
                 return _searchLawyerVM ?? (_searchLawyerVM = new SearchLawyerViewModel());
+            }
+        }
+
+        private SearchArgsViewModel _searchArgsVM;
+        /// <summary>
+        /// 查询辩词页面ViewModel
+        /// </summary>
+        public SearchArgsViewModel SearchArgsVM
+        {
+            get
+            {
+                return _searchArgsVM ?? (_searchArgsVM = new SearchArgsViewModel());
             }
         }
     }

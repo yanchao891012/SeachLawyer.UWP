@@ -1,0 +1,65 @@
+﻿<Page
+    x:Class="SeachLawyer.UWP.View.ArgsInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SeachLawyer.UWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <RelativePanel Grid.Row="0"
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                       Padding="0,9">
+            <Button Name="Back"
+                    Content="&#xE0A6;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="24"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Background="Transparent"
+                    Click="Back_Click"/>
+            <TextBlock Name="InfoTitle"
+                       Text="辩词信息"
+                       RelativePanel.RightOf="Back"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="24"
+                       FontFamily="微软雅黑"
+                       Padding="20,0,0,0"/>
+        </RelativePanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="{x:Bind ArgsInfoS.title}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource TitleTextBlockStyle}"/>
+            <RelativePanel Grid.Row="1">
+                <TextBlock x:Name="tb_date"
+                       Text="{x:Bind ArgsInfoS.pdate}"
+                       RelativePanel.AlignRightWithPanel="True"
+                       Margin="10,5"
+                       Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Text="{x:Bind ArgsInfoS.lawer}"
+                           RelativePanel.LeftOf="tb_date"
+                           Margin="0,5"
+                           Style="{StaticResource BaseTextBlockStyle}"/>
+            </RelativePanel>
+            <ScrollViewer Grid.Row="2"
+                          Margin="0,20,0,0"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+                <TextBlock Text="{x:Bind ArgsInfoS.body}"
+                           Margin="10"
+                           Style="{StaticResource SubtitleTextBlockStyle}"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>

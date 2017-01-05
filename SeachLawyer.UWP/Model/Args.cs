@@ -9,7 +9,7 @@ namespace SeachLawyer.UWP.Model
     /// <summary>
     /// 辩词
     /// </summary>
-    class Args
+    public class Args
     {
         /// <summary>
         /// 编号

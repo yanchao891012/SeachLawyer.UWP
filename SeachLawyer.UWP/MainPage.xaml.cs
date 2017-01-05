@@ -71,6 +71,11 @@ namespace SeachLawyer.UWP
                 {
                     mainFrame.Navigate(typeof(SearchLawyerPage));
                 }
+                //查找辩词
+                if (tapped_item.Tag.ToString().Equals("3"))
+                {
+                    mainFrame.Navigate(typeof(SearchArgsPage));
+                }
             }
         }
         /// <summary>

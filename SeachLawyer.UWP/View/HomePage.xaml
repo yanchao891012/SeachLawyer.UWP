@@ -33,7 +33,7 @@
                   SelectionMode="None"
                   ItemClick="LawyerListView_ItemClick"
                   ItemsSource="{Binding LawyerList}"
-                  ItemTemplate="{StaticResource dataTemplateForListView}">
+                  ItemTemplate="{StaticResource dataTemplateLawyersForListView}">
         </ListView>
         <ProgressRing Grid.Row="1"
                  Name="Loading"
