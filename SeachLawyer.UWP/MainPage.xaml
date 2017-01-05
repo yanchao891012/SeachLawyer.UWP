@@ -40,6 +40,12 @@
                             <TextBlock Text="辩词" Style="{StaticResource textblockMenuContent}"/>
                         </StackPanel>
                     </ListBoxItem>
+                    <ListBoxItem Tag="4" Tapped="ListBoxItem_Tapped" Name="aboutItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE130;" Style="{StaticResource textblockMenuIcon}"/>
+                            <TextBlock Text="关于" Style="{StaticResource textblockMenuContent}"/>
+                        </StackPanel>
+                    </ListBoxItem>
                 </ListBox>
             </SplitView.Pane>
             <SplitView.Content>

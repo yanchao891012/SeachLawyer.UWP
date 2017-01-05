@@ -117,6 +117,9 @@
     <Compile Include="ViewModel\SearchArgsViewModel.cs" />
     <Compile Include="ViewModel\SearchLawyerViewModel.cs" />
     <Compile Include="ViewModel\VMLocator.cs" />
+    <Compile Include="View\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ArgsInfo.xaml.cs">
       <DependentUpon>ArgsInfo.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,7 @@
     <None Include="SeachLawyer.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Image\user.jpeg" />
     <Content Include="Constant\Pro_City.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -160,6 +164,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Theme\NewBaseDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AboutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

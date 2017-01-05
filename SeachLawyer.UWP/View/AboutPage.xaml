@@ -1,0 +1,41 @@
+﻿<ContentDialog
+    x:Class="SeachLawyer.UWP.View.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SeachLawyer.UWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="关于" PrimaryButtonText="确定"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="声明" FontWeight="Bold" Margin="0,10,0,0"/>
+        <TextBlock Grid.Row="1" Text="本软件基于聚合数据提供的接口开发。"/>
+        <TextBlock Grid.Row="2" Text="作者" FontWeight="Black" Margin="0,10,0,0"/>
+        <RelativePanel Grid.Row="3">
+            <Image RelativePanel.AlignLeftWithPanel="True"
+                   RelativePanel.AlignVerticalCenterWithPanel="True"
+                   Source="/Assets/Image/user.jpeg"
+                   Height="80"
+                   x:Name="ZX"/>
+            <TextBlock RelativePanel.RightOf="ZX"
+                       RelativePanel.AlignTopWithPanel="True"
+                       RelativePanel.Above="hy"
+                       Padding="10,0,0,0"
+                       Text="眾尋"/>
+            <HyperlinkButton NavigateUri="http://www.cnblogs.com/ZXdeveloper/"
+                             Name="hy"
+                             RelativePanel.RightOf="ZX"
+                             RelativePanel.AlignVerticalCenterWithPanel="True"
+                             Content="http://www.cnblogs.com/ZXdeveloper/"
+                             Margin="10,0,0,0"/>
+        </RelativePanel>
+    </Grid>
+</ContentDialog>

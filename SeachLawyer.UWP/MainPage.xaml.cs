@@ -54,7 +54,7 @@ namespace SeachLawyer.UWP
 
         int _preSelectNavigation = -1;
 
-        private void mainNavigationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void mainNavigationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBoxItem tapped_item = mainNavigationList.SelectedItems[0] as ListBoxItem;
 
@@ -75,6 +75,12 @@ namespace SeachLawyer.UWP
                 if (tapped_item.Tag.ToString().Equals("3"))
                 {
                     mainFrame.Navigate(typeof(SearchArgsPage));
+                }
+
+                if (tapped_item.Tag.ToString().Equals("4"))
+                {
+                    AboutPage about = new AboutPage();
+                    await about.ShowAsync();
                 }
             }
         }
